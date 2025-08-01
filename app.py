@@ -23,7 +23,7 @@ for column in df_encoded.select_dtypes(include=['object']).columns:
 
 # Define pass/fail (you can customize this based on dataset)
 if 'Grade' in df_encoded.columns:
-    df_encoded['pass'] = df_encoded['G3'].apply(lambda x: 1 if x >= 10 else 0)
+    df_encoded['pass'] = df_encoded['Grade'].apply(lambda x: 1 if x >= 10 else 0)
 else:
     st.error("Column 'Grade' not found in the dataset.")
     st.stop()
