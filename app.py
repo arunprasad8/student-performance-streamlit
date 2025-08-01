@@ -22,14 +22,14 @@ for column in df_encoded.select_dtypes(include=['object']).columns:
     label_encoders[column] = le
 
 # Define pass/fail (you can customize this based on dataset)
-if 'G3' in df_encoded.columns:
+if 'Grade' in df_encoded.columns:
     df_encoded['pass'] = df_encoded['G3'].apply(lambda x: 1 if x >= 10 else 0)
 else:
-    st.error("Column 'G3' not found in the dataset.")
+    st.error("Column 'Grade' not found in the dataset.")
     st.stop()
 
 # Train/test split
-X = df_encoded.drop(['G3', 'pass'], axis=1)
+X = df_encoded.drop(['Grade', 'pass'], axis=1)
 y = df_encoded['pass']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
