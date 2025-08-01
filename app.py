@@ -67,7 +67,7 @@ for col in X.columns:
 if st.button("Predict"):
     input_df = pd.DataFrame([input_data])
     for col in label_encoders:
-        input_df[col] = label_encoders[col].transform(input_df[col])
+        input_df[col] = label_encoders[col].transform([input_df[col][0]])
 
     prediction = model.predict(input_df)[0]
     result = "🎉 Pass" if prediction == 1 else "⚠️ Fail"
